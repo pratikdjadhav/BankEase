@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "txn_ref",nullable = false,unique = true,length = 30)
+    @Column(name = "txn_ref", nullable = false, unique = true, length = 30)
     private String txnRef;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,24 +31,23 @@ public class Transaction {
     @JoinColumn(name = "to_account_id") // null for withdrawals
     private Account toAccount;
 
-    @Column(nullable = false,precision = 15,scale = 2)
+    @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false, length = 10)
     private TransactionType type;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false, length = 10)
     private TransactionStatus status;
 
     @Column(length = 255)
     private String description;
 
     @CreationTimestamp
-    @Column(name = "created_at",updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
-
 
 
 }

@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountRepository extends
-        JpaRepository<Account,Long> {
+        JpaRepository<Account, Long> {
 
     Optional<Account> findByAccountNumber(String accountNumber);
+
     List<Account> findByCustomerId(Long customerId);
+
     boolean existsByAccountNumber(String accountNumber);
 
 }

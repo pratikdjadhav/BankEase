@@ -20,29 +20,29 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "account_number",nullable = false,unique = true)
+    @Column(name = "account_number", nullable = false, unique = true)
     private String accountNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false, length = 10)
     private AccountType type;
 
-    @Column(nullable = false,precision = 15,scale = 2)
+    @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal balance = BigDecimal.ZERO;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false, length = 10)
     private AccountStatus status = AccountStatus.ACTIVE;
 
     @Version
     private long version;
 
     @CreationTimestamp
-    @Column(name = "created_at",updatable = false)
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
 
